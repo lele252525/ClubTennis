@@ -12,9 +12,6 @@ public class Utente extends BaseEntity {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(unique = true)
-	private int codice;
-	
 	private String nome;
 	private String cognome;
 	private int eta;
