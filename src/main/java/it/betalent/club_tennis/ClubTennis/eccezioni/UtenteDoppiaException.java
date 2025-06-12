@@ -1,4 +1,4 @@
-package eccezioni;
+package it.betalent.club_tennis.ClubTennis.eccezioni;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,4 +1,4 @@
-package costanti;
+package it.betalent.club_tennis.ClubTennis.costanti;
 
 public class UtenteCostanti {
 	

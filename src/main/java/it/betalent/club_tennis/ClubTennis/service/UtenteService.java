@@ -1,6 +1,6 @@
-package service;
+package it.betalent.club_tennis.ClubTennis.service;
 
-import DTO.UtenteDTO;
+import it.betalent.club_tennis.ClubTennis.DTO.UtenteDTO;
 
 public interface UtenteService {
 	

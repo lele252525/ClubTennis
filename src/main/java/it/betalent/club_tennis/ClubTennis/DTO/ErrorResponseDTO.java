@@ -1,4 +1,4 @@
-package DTO;
+package it.betalent.club_tennis.ClubTennis.DTO;
 
 import java.time.LocalDateTime;
 

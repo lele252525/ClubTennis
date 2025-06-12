@@ -1,4 +1,4 @@
-package controller;
+package it.betalent.club_tennis.ClubTennis.controller;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import DTO.UtenteDTO;
-import costanti.UtenteCostanti;
-import eccezioni.UtenteAssenteException;
-import eccezioni.UtenteDoppiaException;
-import entity.Utente;
+import it.betalent.club_tennis.ClubTennis.DTO.UtenteDTO;
+import it.betalent.club_tennis.ClubTennis.costanti.UtenteCostanti;
+import it.betalent.club_tennis.ClubTennis.eccezioni.UtenteAssenteException;
+import it.betalent.club_tennis.ClubTennis.eccezioni.UtenteDoppiaException;
+import it.betalent.club_tennis.ClubTennis.entity.Utente;
 import jakarta.validation.Valid;
 
 import java.util.Optional;
@@ -25,9 +25,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 
 import lombok.AllArgsConstructor;
-import repository.UtenteRepo;
-import service.UtenteService;
-import DTO.ResponseDTO;
+import it.betalent.club_tennis.ClubTennis.repository.UtenteRepo;
+import it.betalent.club_tennis.ClubTennis.service.UtenteService;
+import it.betalent.club_tennis.ClubTennis.DTO.ResponseDTO;
 
 @RestController
 @RequestMapping (path="/gestione_utenti", produces = {MediaType.APPLICATION_JSON_VALUE})

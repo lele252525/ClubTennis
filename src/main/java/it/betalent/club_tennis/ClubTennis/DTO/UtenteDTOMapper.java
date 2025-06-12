@@ -1,6 +1,6 @@
-package DTO;
+package it.betalent.club_tennis.ClubTennis.DTO;
 
-import entity.Utente;
+import it.betalent.club_tennis.ClubTennis.entity.Utente;
 
 public class UtenteDTOMapper {
 	

@@ -1,4 +1,4 @@
-package entity;
+package it.betalent.club_tennis.ClubTennis.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

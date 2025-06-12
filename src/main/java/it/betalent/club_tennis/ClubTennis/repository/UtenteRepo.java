@@ -1,11 +1,11 @@
-package repository;
+package it.betalent.club_tennis.ClubTennis.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import entity.Utente;
+import it.betalent.club_tennis.ClubTennis.entity.Utente;
 import jakarta.transaction.Transactional;
 
 @RepositoryRestResource

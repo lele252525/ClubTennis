@@ -1,14 +1,14 @@
-package service;
+package it.betalent.club_tennis.ClubTennis.service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import DTO.UtenteDTO;
-import DTO.UtenteDTOMapper;
-import entity.Utente;
-import repository.UtenteRepo;
+import it.betalent.club_tennis.ClubTennis.DTO.UtenteDTO;
+import it.betalent.club_tennis.ClubTennis.DTO.UtenteDTOMapper;
+import it.betalent.club_tennis.ClubTennis.entity.Utente;
+import it.betalent.club_tennis.ClubTennis.repository.UtenteRepo;
 
 @Service
 public class UtenteServiceImpl implements UtenteService {
