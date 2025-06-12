@@ -42,11 +42,12 @@ public class UtenteController {
 	
 	@PostMapping("/creaUtente")
 	public ResponseEntity<ResponseDTO> creaUtente (@Valid @RequestBody UtenteDTO utenteDTO) {
-		Optional<Utente>utenteOpzionale = utenteRepo.findById(utenteDTO.getId());
-		if (utenteOpzionale.isPresent()) {
-			throw new UtenteDoppiaException("L'Utente con ID " + utenteDTO.getId() + "è già stato registrato");
-		}
-		
+		if (utenteDTO.getId() != null) {
+	        Optional<Utente> utenteOpzionale = utenteRepo.findById(utenteDTO.getId());
+	        if (utenteOpzionale.isPresent()) {
+	            throw new UtenteDoppiaException("L'Utente con ID " + utenteDTO.getId() + " è già stato registrato");
+	        }
+	    }	
 		utenteService.creaUtente(utenteDTO);
 		
 		return ResponseEntity
@@ -71,7 +72,7 @@ public class UtenteController {
     }
 	
 	@DeleteMapping("/cancellaUtente")
-	public ResponseEntity<ResponseDTO> cancellaAstronave (@RequestParam Long id) {
+	public ResponseEntity<ResponseDTO> cancellaUtente (@RequestParam Long id) {
 		Utente utente = utenteRepo.findById(id).orElseThrow(
 				() -> new UtenteAssenteException("L'Utente con ID " + id + " non esiste"));
 		utenteRepo.deleteById(id);

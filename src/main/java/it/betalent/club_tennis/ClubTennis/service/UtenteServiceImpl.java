@@ -19,7 +19,7 @@ public class UtenteServiceImpl implements UtenteService {
 	@Override
 	public void creaUtente(UtenteDTO utenteDTO) {
 		Utente utente = UtenteDTOMapper.DTOToUtente(utenteDTO);
-		utente.setDataModifica(LocalDateTime.now());
+		utente.setDataSalvataggio(LocalDateTime.now());
 		utenteRepo.save(utente);
 	}
 	

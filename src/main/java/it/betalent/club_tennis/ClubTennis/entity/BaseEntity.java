@@ -22,14 +22,7 @@ import lombok.ToString;
 @ToString
 public abstract class BaseEntity {
 	
-	@CreatedDate
-	@Column(updatable = false)
-	@CreationTimestamp
-	private LocalDateTime dataCreazione;
-	
-	@LastModifiedDate
-	@Column(insertable = false)
-	@UpdateTimestamp
-	private LocalDateTime dataModifica;
+	@Column(name = "data_salvataggio")
+	private LocalDateTime dataSalvataggio;
 	
 }
