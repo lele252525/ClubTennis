@@ -41,15 +41,8 @@ public class UtenteController {
 	UtenteRepo utenteRepo;
 	
 	@PostMapping("/creaUtente")
-	public ResponseEntity<ResponseDTO> creaUtente (@Valid @RequestBody UtenteDTO utenteDTO) {
-		if (utenteDTO.getId() != null) {
-	        Optional<Utente> utenteOpzionale = utenteRepo.findById(utenteDTO.getId());
-	        if (utenteOpzionale.isPresent()) {
-	            throw new UtenteDoppiaException("L'Utente con ID " + utenteDTO.getId() + " è già stato registrato");
-	        }
-	    }	
+	public ResponseEntity<ResponseDTO> creaUtente (@Valid @RequestBody UtenteDTO utenteDTO) {	
 		utenteService.creaUtente(utenteDTO);
-		
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
 	            .body(new ResponseDTO(UtenteCostanti.STATUS_201, UtenteCostanti.STATUS_201_MESSAGE));
@@ -63,8 +56,6 @@ public class UtenteController {
 	
 	@PutMapping("/modificaUtente")
 	public ResponseEntity<ResponseDTO> modificaUtente(@Valid @RequestBody UtenteDTO utenteDTO) {
-        Utente astronave = utenteRepo.findById(utenteDTO.getId()).orElseThrow(
-                () -> new UtenteDoppiaException("La modifica non è autorizzata"));
         utenteService.modificaUtente(utenteDTO);
         return ResponseEntity
                 .status(HttpStatus.OK)
