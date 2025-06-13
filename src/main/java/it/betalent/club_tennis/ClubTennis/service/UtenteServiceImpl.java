@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import it.betalent.club_tennis.ClubTennis.DTO.UtenteDTO;
 import it.betalent.club_tennis.ClubTennis.DTO.UtenteDTOMapper;
+import it.betalent.club_tennis.ClubTennis.eccezioni.UtenteAssenteException;
 import it.betalent.club_tennis.ClubTennis.eccezioni.UtenteDoppiaException;
 import it.betalent.club_tennis.ClubTennis.entity.Utente;
 import it.betalent.club_tennis.ClubTennis.repository.UtenteRepo;
@@ -47,5 +48,15 @@ public class UtenteServiceImpl implements UtenteService {
 		Utente utente = UtenteDTOMapper.DTOToUtente(utenteDTO);
 		utenteRepo.save(utente);
 	}
+
+	@Override
+	public void cancellaUtente(Long id) {
+		utenteRepo.findById(id).orElseThrow(
+				() -> new UtenteAssenteException("L'Utente con ID " + id + " non esiste"));
+		utenteRepo.deleteById(id);
+		
+	}
+	
+	
 	
 }

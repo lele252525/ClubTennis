@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.betalent.club_tennis.ClubTennis.DTO.UtenteDTO;
-import it.betalent.club_tennis.ClubTennis.costanti.UtenteCostanti;
+import it.betalent.club_tennis.ClubTennis.costanti.TennisCostanti;
 import it.betalent.club_tennis.ClubTennis.eccezioni.UtenteAssenteException;
 import it.betalent.club_tennis.ClubTennis.eccezioni.UtenteDoppiaException;
 import it.betalent.club_tennis.ClubTennis.entity.Utente;
@@ -30,7 +30,7 @@ import it.betalent.club_tennis.ClubTennis.service.UtenteService;
 import it.betalent.club_tennis.ClubTennis.DTO.ResponseDTO;
 
 @RestController
-@RequestMapping (path="/gestione_utenti", produces = {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping (path=TennisCostanti.INGRESSO_END_POINT, produces = {MediaType.APPLICATION_JSON_VALUE})
 @AllArgsConstructor
 @Validated
 public class UtenteController {
@@ -40,37 +40,34 @@ public class UtenteController {
 	@Autowired
 	UtenteRepo utenteRepo;
 	
-	@PostMapping("/creaUtente")
+	@PostMapping(TennisCostanti.CREA_END_POINT)
 	public ResponseEntity<ResponseDTO> creaUtente (@Valid @RequestBody UtenteDTO utenteDTO) {	
 		utenteService.creaUtente(utenteDTO);
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
-	            .body(new ResponseDTO(UtenteCostanti.STATUS_201, UtenteCostanti.STATUS_201_MESSAGE));
+	            .body(new ResponseDTO(TennisCostanti.STATUS_201, TennisCostanti.STATUS_201_MESSAGE));
 	}
 	
-	@GetMapping("/leggiUtente")
+	@GetMapping(TennisCostanti.LEGGI_END_POINT)
 	public ResponseEntity<UtenteDTO> leggiUtente(@RequestParam Long id) {
 		UtenteDTO utenteDTO = utenteService.leggiUtente(id);
 		return ResponseEntity.status(HttpStatus.OK).body(utenteDTO);
 	}
 	
-	@PutMapping("/modificaUtente")
+	@PutMapping(TennisCostanti.MODIFICA_END_POINT)
 	public ResponseEntity<ResponseDTO> modificaUtente(@Valid @RequestBody UtenteDTO utenteDTO) {
         utenteService.modificaUtente(utenteDTO);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(new ResponseDTO(UtenteCostanti.STATUS_200, UtenteCostanti.STATUS_200_MESSAGE));
+                .body(new ResponseDTO(TennisCostanti.STATUS_200, TennisCostanti.STATUS_200_MESSAGE));
     }
 	
-	@DeleteMapping("/cancellaUtente")
+	@DeleteMapping(TennisCostanti.CANCELLA_END_POINT)
 	public ResponseEntity<ResponseDTO> cancellaUtente (@RequestParam Long id) {
-		//TODO questo flusso va modificato per usare logica di business nel service
-		Utente utente = utenteRepo.findById(id).orElseThrow(
-				() -> new UtenteAssenteException("L'Utente con ID " + id + " non esiste"));
-		utenteRepo.deleteById(id);
+		utenteService.cancellaUtente(id);
 		return ResponseEntity
 				.status(HttpStatus.OK)
-				.body(new ResponseDTO(UtenteCostanti.STATUS_200, UtenteCostanti.STATUS_200_MESSAGE));
+				.body(new ResponseDTO(TennisCostanti.STATUS_200, TennisCostanti.STATUS_200_MESSAGE));
 		}
 	
 }
