@@ -64,6 +64,7 @@ public class UtenteController {
 	
 	@DeleteMapping("/cancellaUtente")
 	public ResponseEntity<ResponseDTO> cancellaUtente (@RequestParam Long id) {
+		//TODO questo flusso va modificato per usare logica di business nel service
 		Utente utente = utenteRepo.findById(id).orElseThrow(
 				() -> new UtenteAssenteException("L'Utente con ID " + id + " non esiste"));
 		utenteRepo.deleteById(id);
