@@ -10,6 +10,7 @@ public class TennisCostanti {
     public static final String STATUS_201_MESSAGE = "Utente registrato con successo";
     public static final String STATUS_500 = "500";
     public static final String STATUS_500_MESSAGE = "Errore del server";
+    
 	public static final String INGRESSO_END_POINT = "/gestione-utenti";
 	public static final String CREA_END_POINT = "/creaUtente";
 	public static final String MODIFICA_END_POINT = "/modificaUtente";
